@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
-
-namespace Encoder
+using OOPBasics.Shared;
+namespace OOPBasics
 {
     class TextEncoder
     {

@@ -1,0 +1,13 @@
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\obj\Debug\netcoreapp2.0\OOpBasics.csproj.CoreCompileInputs.cache
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\obj\Debug\netcoreapp2.0\OOpBasics.AssemblyInfoInputs.cache
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\obj\Debug\netcoreapp2.0\OOpBasics.AssemblyInfo.cs
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\obj\Debug\netcoreapp2.0\OOpBasics.csprojResolveAssemblyReference.cache
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\bin\Debug\netcoreapp2.0\OOpBasics.deps.json
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\bin\Debug\netcoreapp2.0\OOpBasics.runtimeconfig.json
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\bin\Debug\netcoreapp2.0\OOpBasics.runtimeconfig.dev.json
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\bin\Debug\netcoreapp2.0\OOpBasics.dll
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\bin\Debug\netcoreapp2.0\OOpBasics.pdb
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\bin\Debug\netcoreapp2.0\OOPBasics.Shared.dll
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\bin\Debug\netcoreapp2.0\OOPBasics.Shared.pdb
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\obj\Debug\netcoreapp2.0\OOpBasics.dll
+C:\Users\alexandru.frunza\source\repos\Encoder\Encoder\obj\Debug\netcoreapp2.0\OOpBasics.pdb

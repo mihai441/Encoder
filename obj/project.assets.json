@@ -196,6 +196,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "OOPBasics.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/OOPBasics.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OOPBasics.Shared.dll": {}
+        }
       }
     }
   },
@@ -656,11 +666,17 @@
         "netstandard.library.2.0.0.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "OOPBasics.Shared/1.0.0": {
+      "type": "project",
+      "path": "../OOPBasics.Shared/OOPBasics.Shared.csproj",
+      "msbuildProject": "../OOPBasics.Shared/OOPBasics.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "OOPBasics.Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -673,9 +689,9 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\alexandru.frunza\\source\\repos\\Encoder\\Encoder\\Encoder.csproj",
-      "projectName": "Encoder",
-      "projectPath": "C:\\Users\\alexandru.frunza\\source\\repos\\Encoder\\Encoder\\Encoder.csproj",
+      "projectUniqueName": "C:\\Users\\alexandru.frunza\\source\\repos\\Encoder\\Encoder\\OOpBasics.csproj",
+      "projectName": "OOpBasics",
+      "projectPath": "C:\\Users\\alexandru.frunza\\source\\repos\\Encoder\\Encoder\\OOpBasics.csproj",
       "packagesPath": "C:\\Users\\alexandru.frunza\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\alexandru.frunza\\source\\repos\\Encoder\\Encoder\\obj\\",
       "projectStyle": "PackageReference",
@@ -695,7 +711,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\alexandru.frunza\\source\\repos\\Encoder\\OOPBasics.Shared\\OOPBasics.Shared.csproj": {
+              "projectPath": "C:\\Users\\alexandru.frunza\\source\\repos\\Encoder\\OOPBasics.Shared\\OOPBasics.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

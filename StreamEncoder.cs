@@ -1,10 +1,8 @@
 ﻿using System;
 using System.IO;
 
-namespace Encoder
+namespace OOPBasics
 {
-
-
     class StreamEncoder
     {
         private TextReader reader;
@@ -13,29 +11,20 @@ namespace Encoder
         public StreamEncoder(TextEncoder textEncoder, TextReader reader)
         {
 
-            this.reader = reader; 
+            this.reader = reader;
             this.textEncoder = textEncoder;
-
         }
 
 
-
         public void Encode(BinaryWriter writer)
-        {
-            
+        {            
             String line = "";
 
             while ((line = reader.ReadLine()) != null)
             {
                 byte[] result = textEncoder.Encode(line);
                 writer.Write(result);
-
             }
         }
-
-
-
-
-
     }
 }

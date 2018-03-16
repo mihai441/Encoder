@@ -1,24 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
-namespace Encoder
+namespace OOPBasics
 {
     class Program
     {
+        private static readonly String PATH_NAME = @"E:\Plugins";
+        private static readonly String MODULE_INTERFACE="IEncoder";
+
         static void Main(string[] args)
         {
             TextReader textReader = GetInputTextReader();
             BinaryWriter binaryWriter = GetInputBinaryWriter();
+            PluginsManager pluginsManager = new PluginsManager(PATH_NAME);
 
-            CaesarEncoder caesarEncoder = new CaesarEncoder();
-            EnigmaEncoder enigmaEncoder = new EnigmaEncoder(117, 399, getRandomNumber());
-            TextEncoder textEncoder = new TextEncoder(caesarEncoder);
+            ShowMenu(pluginsManager);
+
+
+            /*TextEncoder textEncoder = new TextEncoder();
             StreamEncoder stream = new StreamEncoder(textEncoder, textReader);
 
 
             stream.Encode(binaryWriter);
             textReader.Close();
-            binaryWriter.Close();
+            binaryWriter.Close();*/
         }
 
         private static TextReader GetInputTextReader()
@@ -80,5 +86,16 @@ namespace Encoder
             Random rand = new Random();
             return rand.Next();
         }
+
+        private static void ShowMenu(PluginsManager pluginsManager)
+        {
+            int counter=0;
+            foreach(var item in pluginsManager.Plugins)
+            {
+                Console.WriteLine(String.Format("{0}.{1}", counter++, item.GetName()));                
+            }
+
+        }
+
     }
 }
