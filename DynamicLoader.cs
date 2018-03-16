@@ -8,16 +8,29 @@ namespace Encoder
     class DynamicLoader
     {
         private Assembly assembly;
-        private List<Object> ModulesList;
+        private Type typeOfInterface;
+        private List<object> ModulesList;
 
-
-        public DynamicLoader(String locationn, Type type)
+        public DynamicLoader(String name, Type type)
         {
-            Assembly assembly = Assembly.LoadFrom("MyNice.dll");
-            ModulesList = new List<>();
-            
-
+            Assembly assembly = Assembly.LoadFrom(name + ".dll");
+            typeOfInterface = type;
         }
+
+        public List<object> GetInstancesList()
+        {
+            foreach (var assemblyTypes in assembly.GetTypes())
+            {
+                if (typeof(assemblyTypes).GetInterfaces().Contains(typeof(typeOfInterface)))
+                {
+                    ModulesList.Add(Activator.CreateInstance(assemblyTypes));
+                }                
+
+            }
+            return ModulesList;
+        }
+
+
 
 
 
