@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DynamicLoader.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OOPBasics.Shared\OOPBasics.Shared.csproj" />
   </ItemGroup>
 

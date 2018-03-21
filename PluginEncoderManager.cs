@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using OOPBasics.Shared;
 using System.IO;
 
-namespace OOpBasics
+namespace OOPBasics
 {
-
-    class PluginsManager<T>
+    class PluginEncoderManager
     {
         private Assembly assembly;
-        private List<T> pluginsList;
+        private List<IEncoderPlugin> pluginsList;
 
-        public PluginsManager()
+        public PluginEncoderManager(String path)
         {
-            pluginsList = new List<T>();
+            pluginsList = new List<IEncoderPlugin>();
+            LoadPlugins(path);
         }
 
-        public IEnumerable<T> Plugins
+        public IEnumerable<IEncoderPlugin> Plugins
         {
             get
             {
@@ -25,21 +26,23 @@ namespace OOpBasics
         }
 
 
-        public void LoadPlugins(String path)
+        private void LoadPlugins(String path)
         {
+
+            //get dll files
+            //foreach file in the path load assembly
             foreach (string dll in Directory.GetFiles(path, "*.dll", SearchOption.TopDirectoryOnly))
             {
                 assembly = Assembly.LoadFrom(dll);
-                Type pluginIfType = typeof(T);
+                Type pluginIfType = typeof(IEncoderPlugin);
                 foreach (var assemblyType in assembly.GetExportedTypes())
                 {
                     if (pluginIfType.IsAssignableFrom(assemblyType))
                     {
-                        pluginsList.Add((T)Activator.CreateInstance(assemblyType));
+                        pluginsList.Add((IEncoderPlugin)Activator.CreateInstance(assemblyType));
                     }
                 }
             }
-
         }
     }
 }

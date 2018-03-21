@@ -1,0 +1,132 @@
+﻿using OOPBasics.Shared;
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace OOPBasics
+{
+    class Program
+    {
+        private static readonly String PATH_NAME = @"E:\Plugins";
+        private static readonly String MODULE_INTERFACE = "IEncoder";
+        private static List<IPlugin> plugins;
+        private static int pluginIndex;
+
+        static void Main(string[] args)
+        {
+            TextReader textReader = GetInputTextReader();
+            BinaryWriter binaryWriter = GetInputBinaryWriter();
+            PluginsManager pluginsManager = new PluginsManager(PATH_NAME);
+
+            GetPlugins(pluginsManager);
+
+            pluginIndex = ShowMenu();
+            ShowPluginMenu(pluginIndex);
+
+            TextEncoder textEncoder = new TextEncoder(plugins[pluginIndex]);
+            StreamEncoder stream = new StreamEncoder(textEncoder, textReader);
+
+
+            stream.Encode(binaryWriter);
+            textReader.Close();
+            binaryWriter.Close();
+        }
+
+        private static TextReader GetInputTextReader()
+        {
+            StreamReader streamreader = null;
+
+            try
+            {
+                streamreader = new StreamReader("textfiles\\input.txt");
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("FIle not found" + ex.FileName);
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                Console.WriteLine("Directory not found" + ex.Message);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Eroare la citirea fisierului" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Unexpected exception" + ex.Message);
+            }
+
+            return streamreader;
+        }
+
+        private static BinaryWriter GetInputBinaryWriter()
+        {
+            BinaryWriter bw = null;
+            try
+            {
+                bw = new BinaryWriter(File.Open("textfiles\\output.bin", FileMode.Create));
+            }
+
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("Fisierul nu a fost gasit" + ex.FileName);
+
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Eroare la scrierea fisierului" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Unexpected exception" + ex.Message);
+
+            }
+
+            return bw;
+        }
+
+        private static int getRandomNumber()
+        {
+            Random rand = new Random();
+            return rand.Next();
+        }
+
+        private static int ShowMenu()
+        {
+            int option;
+
+            for (int i = 0; i < plugins.Count; i++)
+            {
+                Console.WriteLine(String.Format("{0}.{1}", i, plugins[i].GetName()));
+            }
+            do
+            {
+                option = Convert.ToInt32(Console.ReadKey().KeyChar);
+            }
+            while (option < 0 && option > plugins.Count);
+            return option;
+        }
+
+        private static void GetPlugins(PluginsManager pluginsManager)
+        {
+            foreach (var item in pluginsManager.Plugins)
+            {
+                plugins.Add(item);
+            }
+        }
+
+        private static void ShowPluginMenu(int index)
+        {
+            IDictionary<String,int> arguments = new IDictionary<String,int>();
+            Console.WriteLine(plugins[index].GetName());
+            Console.WriteLine(plugins[index].GetRequiredArguments());
+            Console.WriteLine("Enter the required arguments");
+
+            arguments.Add("arg1",Convert.ToInt32(Console.ReadKey().KeyChar));
+            arguments.Add("arg2",Convert.ToInt32(Console.ReadKey().KeyChar));
+            arguments.Add("arg3",Convert.ToInt32(Console.ReadKey().KeyChar));
+            plugins[index].SetArguments(arguments);
+        }
+    }
+}

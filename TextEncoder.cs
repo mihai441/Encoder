@@ -6,7 +6,6 @@ namespace OOPBasics
     class TextEncoder
     {
         private IEncoder encoder;
-        private byte[] lineInBytes;
     
         public TextEncoder(IEncoder encoder)
         {

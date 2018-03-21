@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Encoder
 {
-    class DynamicLoader
+    class PluginsManager
     {
         private Assembly assembly;
         private Type typeOfInterface;
         private List<object> ModulesList;
 
-        public DynamicLoader(String name, Type type)
+        public PluginsManager(String name, Type type)
         {
             Assembly assembly = Assembly.LoadFrom(name + ".dll");
             typeOfInterface = type;
